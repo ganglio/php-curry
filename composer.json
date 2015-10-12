@@ -1,0 +1,30 @@
+{
+    "name": "ganglio/curry",
+    "type": "library",
+    "description": "Flexible but simple curry function",
+    "keywords": ["curry wrapping", "curry", "arity"],
+    "homepage": "http://www.github.com/ganglio/PDS",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roberto Torella",
+            "email": "roberto.torella@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "ganglio": "src",
+            "CurryTests": "test/src"
+        },
+        "classmap" : [
+            "src",
+            "test/src"
+        ]
+    },
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    }
+}
