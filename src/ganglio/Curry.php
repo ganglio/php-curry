@@ -2,7 +2,8 @@
 
 namespace ganglio;
 
-class Curry {
+class Curry
+{
 
     const NOT_CALLABLE = 1;
     const TOO_MANY_ARGS = 2;
