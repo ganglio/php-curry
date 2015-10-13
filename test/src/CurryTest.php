@@ -40,6 +40,18 @@ class CurryTest extends \PHPUnit_Framework_TestCase
         $cu(1, 2, 3, 4);
     }
 
+    /**
+     * @expectedException    InvalidArgumentException
+     * expectedExceptionCode 2
+     */
+    public function testRightTooManyArguments() {
+        $cu = new Curry(function($a,$b){
+            return $a/$b;
+        });
+
+        $cu(2)->right(2,3);
+    }
+
     public function testReturnsCallable()
     {
         $this->assertTrue(
@@ -77,6 +89,38 @@ class CurryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             6,
             $two(3)
+        );
+    }
+
+    public function testRightCurry() {
+        $cu = new Curry(function($a,$b){
+            return $a/$b;
+        });
+
+        $inv = $cu(1);
+        $id  = $cu->right(1);
+
+        $this->assertEquals(
+            3,
+            $id(3)
+        );
+
+        $this->assertEquals(
+            0.5,
+            $inv(2)
+        );
+    }
+
+    public function testMixedArgs() {
+        $cu = new Curry(function($a,$b,$c,$d) {
+            return ($a+1/$b)/($c+1/$d);
+        });
+
+        $fn = $cu(0,1)->right(2);
+
+        $this->assertEquals(
+            2/3,
+            $fn(1)
         );
     }
 }
