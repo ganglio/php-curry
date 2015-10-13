@@ -113,6 +113,16 @@ class CurryTest extends \PHPUnit_Framework_TestCase
         );
     }
 
+    public function testRightCurryFull()
+    {
+        $cu = new Curry($this->func);
+
+        $this->assertEquals(
+            6,
+            $cu(1,2)->right(3)
+        );
+    }
+
     public function testMixedArgs()
     {
         $cu = new Curry(function($a,$b,$c,$d) {
