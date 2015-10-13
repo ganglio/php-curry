@@ -43,7 +43,8 @@ class Curry
         return new Curry($this->f, array_merge($this->left, func_get_args()), $this->right);
     }
 
-    public function right() {
+    public function right()
+    {
         $args = array_merge($this->left, $this->right, func_get_args());
 
         if (count($args) > count($this->fargs)) {
